@@ -9,8 +9,8 @@ namespace Runn\Serialization;
 interface SerializerAwareInterface
 {
 
-    public function setSerializer(/*?*/SerializerInterface $serializer);
+    public function setSerializer(?SerializerInterface $serializer);
 
-    public function getSerializer(): /*?*/SerializerInterface;
+    public function getSerializer(): ?SerializerInterface;
 
 }
