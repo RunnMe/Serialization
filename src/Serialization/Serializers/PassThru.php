@@ -28,7 +28,6 @@ class PassThru
      * Deserialize method
      * @param string $data
      * @return mixed
-     * @throws \Runn\Serialization\DecodeException
      */
     public function decode(string $data)
     {
