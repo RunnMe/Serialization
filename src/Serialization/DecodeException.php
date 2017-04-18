@@ -11,7 +11,7 @@ namespace Runn\Serialization;
  * @codeCoverageIgnore
  */
 class DecodeException
-    extends \Runn\Core\Exception
+    extends Exception
 {
 
 }

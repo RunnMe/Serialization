@@ -11,7 +11,7 @@ namespace Runn\Serialization;
  * @codeCoverageIgnore
  */
 class EncodeException
-    extends \Runn\Core\Exception
+    extends Exception
 {
 
 }
