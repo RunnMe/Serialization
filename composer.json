@@ -11,7 +11,8 @@
   ],
   "require": {
     "php": ">=7.0",
-    "runn/core": "7.0.*"
+    "runn/core": "7.0.*",
+    "symfony/yaml": "3.*"
   },
   "require-dev": {
     "phpunit/phpunit": "5.*"
