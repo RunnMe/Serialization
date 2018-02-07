@@ -167,7 +167,7 @@ class YamlTest extends \PHPUnit_Framework_TestCase
         $obj->baz = 42;
 
         $this->assertSame(
-            '!php/object:O:8:"stdClass":2:{s:3:"foo";s:3:"bar";s:3:"baz";i:42;}',
+            '!php/object \'O:8:"stdClass":2:{s:3:"foo";s:3:"bar";s:3:"baz";i:42;}\'',
             $serializer->encode($obj)
         );
     }
@@ -195,7 +195,7 @@ class YamlTest extends \PHPUnit_Framework_TestCase
         $obj->baz = 42;
 
         $this->assertSame(
-            '!php/object:C:13:"Runn\Core\Std":41:{a:2:{s:3:"foo";s:3:"bar";s:3:"baz";i:42;}}',
+            '!php/object \'C:13:"Runn\Core\Std":41:{a:2:{s:3:"foo";s:3:"bar";s:3:"baz";i:42;}}\'',
             $serializer->encode($obj)
         );
     }
