@@ -10,9 +10,9 @@
     }
   ],
   "require": {
-    "php": ">=7.3",
+    "php": ">=7.4",
     "ext-json": "*",
-    "runn/core": "7.3.*",
+    "runn/core": "7.4.*",
     "symfony/yaml": "3.*"
   },
   "require-dev": {
