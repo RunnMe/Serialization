@@ -23,13 +23,14 @@ class Php
         return preg_replace(
             [
                 '~^([\s\S]+)__set_state\(array\s*\($~imU',
-                '~^(\s*)array\s*\($~im',
+                '~array\s*\($~im',
                 '~^(\s*)\)(\,?)$~im',
                 '~^(\s*)\)\)(\,?)$~im',
                 '~\s+$~im'
-            ], [
+            ],
+            [
                 '$1__set_state([',
-                '$1[',
+                '[',
                 '$1]$2',
                 '$1])$2',
                 ''
