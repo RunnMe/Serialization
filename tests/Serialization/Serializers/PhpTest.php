@@ -167,9 +167,13 @@ class FileTest extends \PHPUnit_Framework_TestCase
         $obj->foo = 'bar';
         $obj->baz = 42;
 
-        $this->assertSame(
-            "stdClass::__set_state([\n   'foo' => 'bar',\n   'baz' => 42,\n])",
-            $serializer->encode($obj)
+        $this->assertContains(
+            $serializer->encode($obj),
+            [
+                "stdClass::__set_state([\n   'foo' => 'bar',\n   'baz' => 42,\n])",
+                // @7.3+
+                "(object) array(\n   'foo' => 'bar',\n   'baz' => 42,\n)",
+            ]
         );
     }
 
