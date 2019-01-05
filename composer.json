@@ -9,12 +9,10 @@
       "name": "Albert Stepantsev"
     }
   ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "require": {
     "php": ">=7.2",
     "ext-json": "*",
-    "runn/core": "dev-master",
+    "runn/core": "7.2.*",
     "symfony/yaml": "3.*"
   },
   "require-dev": {
