@@ -167,13 +167,9 @@ class FileTest extends \PHPUnit_Framework_TestCase
         $obj->foo = 'bar';
         $obj->baz = 42;
 
-        $this->assertContains(
+        $this->assertSame(
+            "(object) [\n   'foo' => 'bar',\n   'baz' => 42,\n]",
             $serializer->encode($obj),
-            [
-                "stdClass::__set_state([\n   'foo' => 'bar',\n   'baz' => 42,\n])",
-                // @7.3+
-                "(object) [\n   'foo' => 'bar',\n   'baz' => 42,\n]",
-            ]
         );
     }
 
@@ -219,14 +215,9 @@ class FileTest extends \PHPUnit_Framework_TestCase
         $obj2->quuux = 1337;
         $arrayOfSimpleObjects = [$obj1, $obj2];
 
-        $this->assertContains(
+        $this->assertSame(
+            "[\n  0 =>\n  (object) [\n     'foo' => 'bar',\n     'baz' => 42,\n  ],\n  1 =>\n  (object) [\n     'bat' => 'quux',\n     'quuux' => 1337,\n  ],\n]",
             $serializer->encode($arrayOfSimpleObjects),
-            [
-                "[\n  0 =>\n  stdClass::__set_state([\n     'foo' => 'bar',\n     'baz' => 42,\n  ]),\n  1 =>\n  stdClass::__set_state([\n     'bat' => 'quux',\n     'quuux' => 1337,\n  ]),\n]",
-                // @7.3+
-                "[\n  0 =>\n  (object) [\n     'foo' => 'bar',\n     'baz' => 42,\n  ],\n  1 =>\n  (object) [\n     'bat' => 'quux',\n     'quuux' => 1337,\n  ],\n]"
-            ]
-
         );
     }
 

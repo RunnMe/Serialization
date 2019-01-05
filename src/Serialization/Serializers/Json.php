@@ -24,13 +24,11 @@ class Json
      */
     public function encode($data, int $options = 0, int $depth = 512): string
     {
-        // @7.3 use JSON_THROW_ON_ERROR
-        $encoded = json_encode($data, $options, $depth);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            throw new EncodeException(json_last_error_msg());
+        try {
+            $encoded = json_encode($data, $options | JSON_THROW_ON_ERROR, $depth);
+        } catch (\JsonException $e) {
+            throw new EncodeException($e->getMessage(), $e->getCode(), $e);
         }
-
         return $encoded;
     }
 
@@ -45,13 +43,11 @@ class Json
      */
     public function decode(string $data, bool $assoc = true, int $depth = 512, int $options = 0)
     {
-        // @7.3 use JSON_THROW_ON_ERROR
-        $decoded = json_decode($data, $assoc, $depth, $options);
-
-        if (JSON_ERROR_NONE !== json_last_error()) {
-            throw new DecodeException(json_last_error_msg());
+        try {
+            $decoded = json_decode($data, $assoc, $depth, $options | JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            throw new DecodeException($e->getMessage(), $e->getCode(), $e);
         }
-
         return $decoded;
     }
 
