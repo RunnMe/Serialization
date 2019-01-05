@@ -13,5 +13,4 @@ namespace Runn\Serialization;
 abstract class Exception
     extends \Runn\Core\Exception
 {
-
 }

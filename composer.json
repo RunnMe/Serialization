@@ -12,7 +12,8 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.2",
+    "ext-json": "*",
     "runn/core": "dev-master",
     "symfony/yaml": "3.*"
   },

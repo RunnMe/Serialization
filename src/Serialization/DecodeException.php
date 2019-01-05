@@ -13,5 +13,4 @@ namespace Runn\Serialization;
 class DecodeException
     extends Exception
 {
-
 }

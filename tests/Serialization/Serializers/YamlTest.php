@@ -76,17 +76,29 @@ class YamlTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(
             "- foo{$n}- 42{$n}- 3.14159{$n}- true{$n}- false{$n}- null{$n}",
-            $serializer->encode(['foo', 42, 3.14159, true, false, null])
+            str_replace(
+                ["\r\n", "\n"],
+                $n,
+                $serializer->encode(['foo', 42, 3.14159, true, false, null])
+            )
         );
 
         $this->assertSame(
             "1: foo{$n}2: 42{$n}3: 3.14159{$n}4: true{$n}5: false{$n}6: null{$n}",
-            $serializer->encode([1 => 'foo', 2 => 42, 3 => 3.14159, 4 => true, 5 => false, 6 => null])
+            str_replace(
+                ["\r\n", "\n"],
+                $n,
+                $serializer->encode([1 => 'foo', 2 => 42, 3 => 3.14159, 4 => true, 5 => false, 6 => null])
+            )
         );
 
         $this->assertSame(
             "foo: bar{$n}baz: 42{$n}quux: 3.14159{$n}quuux: null{$n}",
-            $serializer->encode(['foo' => 'bar', 'baz' => 42, 'quux' => 3.14159, 'quuux' => null])
+            str_replace(
+                ["\r\n", "\n"],
+                $n,
+                $serializer->encode(['foo' => 'bar', 'baz' => 42, 'quux' => 3.14159, 'quuux' => null])
+            )
         );
     }
 
@@ -134,7 +146,11 @@ class YamlTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(
             "- 1{$n}- 2{$n}-{$n}    - 3{$n}    - 4{$n}",
-            $serializer->encode([1, 2, [3, 4]])
+            str_replace(
+                ["\r\n", "\n"],
+                $n,
+                $serializer->encode([1, 2, [3, 4]])
+            )
         );
     }
 
@@ -167,7 +183,7 @@ class YamlTest extends \PHPUnit_Framework_TestCase
         $obj->baz = 42;
 
         $this->assertSame(
-            '!php/object \'O:8:"stdClass":2:{s:3:"foo";s:3:"bar";s:3:"baz";i:42;}\'',
+            '!php/object:O:8:"stdClass":2:{s:3:"foo";s:3:"bar";s:3:"baz";i:42;}',
             $serializer->encode($obj)
         );
     }
@@ -195,7 +211,7 @@ class YamlTest extends \PHPUnit_Framework_TestCase
         $obj->baz = 42;
 
         $this->assertSame(
-            '!php/object \'C:13:"Runn\Core\Std":41:{a:2:{s:3:"foo";s:3:"bar";s:3:"baz";i:42;}}\'',
+            '!php/object:C:13:"Runn\Core\Std":41:{a:2:{s:3:"foo";s:3:"bar";s:3:"baz";i:42;}}',
             $serializer->encode($obj)
         );
     }
