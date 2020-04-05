@@ -6,7 +6,7 @@
 
     <testsuites>
         <testsuite name="Serialization">
-            <directory phpVersionOperator=">=" phpVersion="7.2">Serialization</directory>
+            <directory phpVersionOperator=">=" phpVersion="7.3">Serialization</directory>
         </testsuite>
     </testsuites>
 
