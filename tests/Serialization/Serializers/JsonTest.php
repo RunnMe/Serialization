@@ -2,11 +2,14 @@
 
 namespace Runn\tests\Serialization\Serializers\Json;
 
+use PHPUnit\Framework\TestCase;
+use Runn\Serialization\DecodeException;
+use Runn\Serialization\EncodeException;
 use Runn\Serialization\SerializerInterface;
 use Runn\Serialization\Serializers\Json;
 use Runn\Core\Std;
 
-class JsonTest extends \PHPUnit_Framework_TestCase
+class JsonTest extends TestCase
 {
 
     public function testInterface()
@@ -175,23 +178,20 @@ class JsonTest extends \PHPUnit_Framework_TestCase
      * ----------
      */
 
-    /**
-    * @expectedException \Runn\Serialization\EncodeException
-    **/
     public function testJsonEncodeError()
     {
         $serializer = new Json();
+
+        $this->expectException(EncodeException::class);
         $serializer->encode(NAN);
-        $this->fail();
     }
 
-    /**
-    * @expectedException \Runn\Serialization\DecodeException
-    **/
     public function testJsonDecodeError()
     {
         $serializer = new Json();
+
+        $this->expectException(DecodeException::class);
         $serializer->decode("{'invalid':'data'}");
-        $this->fail();
     }
+
 }

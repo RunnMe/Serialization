@@ -2,7 +2,9 @@
 
 namespace Runn\tests\Serialization\Serializers\Php;
 
+use PHPUnit\Framework\TestCase;
 use Runn\Core\Std;
+use Runn\Serialization\DecodeException;
 use Runn\Serialization\SerializerInterface;
 use Runn\Serialization\Serializers\Php;
 
@@ -32,7 +34,7 @@ class testClass
     }
 }
 
-class FileTest extends \PHPUnit_Framework_TestCase
+class FileTest extends TestCase
 {
 
     public function testInterface()
@@ -190,14 +192,12 @@ class FileTest extends \PHPUnit_Framework_TestCase
      * ----------
      */
 
-    /**
-     * @expectedException \Runn\Serialization\DecodeException
-     */
     public function testDecodeParseError()
     {
         $serializer = new Php();
+
+        $this->expectException(DecodeException::class);
         $serializer->decode('foo() function does not exist');
-        $this->fail();
     }
 
     /*

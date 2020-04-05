@@ -1,3 +1,8 @@
+7.2.4, 7.3.4, 7.4.4
+===================
+* Tests are using PHPUnit 8 framework now
+* SerializerAwareTrait is added 
+
 7.2.3, 7.3.3, 7.4.3
 ===================
 * PHP 7.0 support is dropped
