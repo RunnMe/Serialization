@@ -2,10 +2,11 @@
 
 namespace Runn\tests\Serialization\Serializers\PassThru;
 
+use PHPUnit\Framework\TestCase;
 use Runn\Serialization\SerializerInterface;
 use Runn\Serialization\Serializers\PassThru;
 
-class PassThruTest extends \PHPUnit_Framework_TestCase
+class PassThruTest extends TestCase
 {
 
     public function testInterface()
