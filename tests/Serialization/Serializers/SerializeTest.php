@@ -2,7 +2,9 @@
 
 namespace Runn\tests\Serialization\Serializers\Serialize;
 
+use PHPUnit\Framework\TestCase;
 use Runn\Core\Std;
+use Runn\Serialization\DecodeException;
 use Runn\Serialization\SerializerInterface;
 use Runn\Serialization\Serializers\Serialize;
 
@@ -23,7 +25,7 @@ class testClass
     }
 }
 
-class SerializeTest extends \PHPUnit_Framework_TestCase
+class SerializeTest extends TestCase
 {
 
     public function testInterface()
@@ -180,14 +182,12 @@ class SerializeTest extends \PHPUnit_Framework_TestCase
      * ----------
      */
 
-    /**
-     * @expectedException \Runn\Serialization\DecodeException
-     */
     public function testDecodeParseError()
     {
         $serializer = new Serialize();
+
+        $this->expectException(DecodeException::class);
         $serializer->decode('invalid data');
-        $this->fail();
     }
 
     /*
@@ -239,4 +239,5 @@ class SerializeTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($obj, $serializer->decode($serializedObj));
     }
+
 }

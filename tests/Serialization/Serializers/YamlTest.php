@@ -2,11 +2,14 @@
 
 namespace Runn\tests\Serialization\Serializers\Json;
 
+use PHPUnit\Framework\TestCase;
+use Runn\Serialization\DecodeException;
+use Runn\Serialization\EncodeException;
 use Runn\Serialization\SerializerInterface;
 use Runn\Core\Std;
 use Runn\Serialization\Serializers\Yaml;
 
-class YamlTest extends \PHPUnit_Framework_TestCase
+class YamlTest extends TestCase
 {
 
     public function testInterface()
@@ -226,23 +229,20 @@ class YamlTest extends \PHPUnit_Framework_TestCase
      * ----------
      */
 
-    /**
-    * @expectedException \Runn\Serialization\EncodeException
-    **/
     public function testJsonEncodeError()
     {
         $serializer = new Yaml();
+
+        $this->expectException(EncodeException::class);
         $serializer->encode(fopen(__FILE__, 'r'), 2, 4, \Symfony\Component\Yaml\Yaml::DUMP_EXCEPTION_ON_INVALID_TYPE);
-        $this->fail();
     }
 
-    /**
-    * @expectedException \Runn\Serialization\DecodeException
-    **/
     public function testJsonDecodeError()
     {
         $serializer = new Yaml();
+
+        $this->expectException(DecodeException::class);
         $serializer->decode("@@@");
-        $this->fail();
     }
+
 }
